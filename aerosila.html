@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>НПП "Аэросила" - Научно-производственное предприятие авиационной техники</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #0a2e5a, #1a4b8c);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://images.unsplash.com/photo-1457369804613-52c61a468e7d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.3;
+            z-index: 0;
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .logo {
+            font-size: 2.8rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .slogan {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        nav {
+            background-color: #1a4b8c;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+        
+        nav ul li {
+            margin: 0 1.5rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+        }
+        
+        nav ul li a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        section {
+            margin-bottom: 3rem;
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        h1, h2, h3 {
+            color: #1a4b8c;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+        
+        h2::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: #1a4b8c;
+            margin-top: 0.5rem;
+            border-radius: 2px;
+        }
+        
+        .about {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+        }
+        
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s;
+        }
+        
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+        
+        .about-content {
+            flex: 1;
+        }
+        
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .product-card {
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 1.5rem;
+            transition: all 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .product-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+        }
+        
+        .product-title {
+            font-size: 1.2rem;
+            margin: 1rem 0;
+            color: #1a4b8c;
+        }
+        
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .contact-card {
+            background-color: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #1a4b8c;
+        }
+        
+        .contact-icon {
+            font-size: 2rem;
+            color: #1a4b8c;
+            margin-bottom: 1rem;
+        }
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .gallery-item {
+            border-radius: 8px;
+            overflow: hidden;
+            height: 200px;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        footer {
+            background-color: #0a2e5a;
+            color: white;
+            text-align: center;
+            padding: 3rem 0;
+            margin-top: 3rem;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            margin: 1rem;
+        }
+        
+        .footer-bottom {
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        @media (max-width: 768px) {
+            .about {
+                flex-direction: column;
+            }
+            
+            .about-image {
+                width: 100%;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav ul li {
+                margin: 0.5rem 0;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="header-image"></div>
+        <div class="header-content">
+            <div class="logo">НПП "Аэросила"</div>
+            <div class="slogan">Лидер в разработке инновационных решений для авиационной промышленности</div>
+        </div>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="#about"><i class="fas fa-building"></i>О предприятии</a></li>
+            <li><a href="#products"><i class="fas fa-cogs"></i> Продукция</a></li>
+            <li><a href="#technologies"><i class="fas fa-microscope"></i> Технологии</a></li>
+            <li><a href="#gallery"><i class="fas fa-images"></i> Галерея</a></li>
+            <li><a href="#contacts"><i class="fas fa-envelope"></i> Контакты</a></li>
+        </ul>
+    </nav>
+    
+    <div class="container">
+        <section id="about">
+            <h2>О предприятии</h2>
+            <div class="about">
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1581093057302-7a5dc8a6b7d3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Производственные мощности НПП Аэросила">
+                </div>
+                <div class="about-content">
+                    <p>Научно-производственное предприятие "Аэросила" основано в 1992 году и является одним из ведущих разработчиков и производителей систем в России.</p>
+                    <p>Наша миссия - создание инновационных решений, обеспечивающих лидерство отечественной авиа промышленности на мировом рынке.</p>
+                    <p>Сегодня в состав предприятия входят:</p>
+                    <ul>
+                        <li>Конструкторское бюро</li>
+                        <li>Опытное производство</li>
+                        <li>Испытательный комплекс</li>
+                        <li>Научно-исследовательский центр</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <section id="products">
+            <h2>Наша продукция</h2>
+            <div class="products">
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1534447677768-be436bb09401?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Авиационные системы" class="product-image">
+                    <h3 class="product-title">Авиационные системы управления</h3>
+                    <p>Комплексные системы управления для гражданской и военной авиации, обеспечивающие высокую точность и надежность.</p>
+                </div>
+                
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1462331940025-496dfbfc7564?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Космические агрегаты" class="product-image">
+                    <h3 class="product-title">Авиационные агрегаты</h3>
+                    <p>Компоненты для авиационных аппаратов, включая системы жизнеобеспечения, управления и навигации.</p>
+                </div>
+                
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1581094271901-8022df4466f9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Испытательное оборудование" class="product-image">
+                    <h3 class="product-title">Испытательное оборудование</h3>
+                    <p>Специализированные стенды и оборудование для тестирования авиационных систем.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="technologies">
+            <h2>Наши технологии</h2>
+            <p>НПП "Аэросила" разрабатывает и внедряет передовые технологии в области:</p>
+            <div class="about" style="margin-top: 2rem;">
+                <div class="about-content">
+                    <ul>
+                        <li>Цифрового проектирования авиационных систем</li>
+                        <li>Композитных материалов нового поколения</li>
+                        <li>Искусственного интеллекта в системах управления</li>
+                        <li>Экологически чистых двигательных установок</li>
+                        <li>Беспилотных авиационных систем</li>
+                    </ul>
+                    <p style="margin-top: 1rem;">Наши разработки защищены более чем 120 патентами и используются в ведущих авиа проектах страны.</p>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Технологии НПП Аэросила">
+                </div>
+            </div>
+        </section>
+        
+        <section id="gallery">
+            <h2>Галерея</h2>
+            <p>Наши производственные мощности и продукция:</p>
+            <div class="gallery">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1581093057925-dc6b0a08d3fe?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Производственный цех">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1581094271900-7dccbd3e2907?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Сборка авиационных компонентов">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1581094271901-8022df4466f9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Испытания оборудования">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1581094271903-5d5e8b5b9a9e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Готовая продукция">
+                </div>
+            </div>
+        </section>
+        
+        <section id="contacts">
+            <h2>Контакты</h2>
+            <div class="contact-info">
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3>Адрес</h3>
+                    <p>Адрес
+142800, Российская Федерация,
+Московская область,
+Ступино, Жданова, 6</p>
+                </div>
+                
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <h3>Телефон</h3>
+                    <p>+7(496) 642 80 85 (Секретарь)</p>
+                </div>
+                
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3>Электронная почта</h3>
+                    <p>vint@aerosila.ru</p>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>НПП "Аэросила"</h3>
+                <p>Лидер в разработке инновационных решений для авиационной промышленности</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Быстрые ссылки</h3>
+                <ul style="list-style: none;">
+                    <li><a href="#about" style="color: white; text-decoration: none;">О предприятии</a></li>
+                    <li><a href="#products" style="color: white; text-decoration: none;">Продукция</a></li>
+                    <li><a href="#contacts" style="color: white; text-decoration: none;">Контакты</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Мы в соцсетях</h3>
+                <div style="font-size: 1.5rem;">
+                    <a href="#" style="color: white; margin-right: 1rem;"><i class="fab fa-vk"></i></a>
+                    <a href="#" style="color: white; margin-right: 1rem;"><i class="fab fa-telegram"></i></a>
+                    <a href="#" style="color: white; margin-right: 1rem;"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2025 НПП "Аэросила". Все права защищены.</p>
+        </div>
+    </footer>
+</body>
+</html>
